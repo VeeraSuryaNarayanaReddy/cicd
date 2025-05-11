@@ -12,7 +12,7 @@ pipeline {
                 sh '''
                     docker stop app || true
                     docker rm app || true
-                    docker run -d --name app -p 8080:80 app
+                    docker run -d --name app -p 8000:8000 app
                 '''
             }
         }
