@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t app -f ../../app/Dockerfile ../../app'
+                sh 'docker build -t app -f ../app/Dockerfile ../app'
                 sh 'docker save app -o app.tar'
                 archiveArtifacts artifacts: 'app.tar', fingerprint: true
             }
