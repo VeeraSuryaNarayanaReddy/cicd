@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('Deploy') {
+            steps {
+                copyArtifacts projectName: 'BuildPipeline', filter: 'app.tar', fingerprint: true
+                sh 'docker load -i app.tar'
+                sh '''
+                    docker stop app || true
+                    docker rm app || true
+                    docker run -d --name app -p 8080:80 app
+                '''
+            }
+        }
+    }
+}
