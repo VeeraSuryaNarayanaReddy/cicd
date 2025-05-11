@@ -11,7 +11,7 @@ pipeline {
     }
     post {
         success {
-            build job: 'DeployPipeline'  // Triggers deploy job
+            build job: 'DeployPipeline'  // This should trigger the deploy job
         }
     }
 }
